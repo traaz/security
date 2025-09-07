@@ -38,9 +38,9 @@ public class UserController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-     //       String username = authentication.getName();  // Giriş yapan kullanıcı adı
+            String username = authentication.getName();  // Giriş yapan kullanıcı adı
 
-            return  " Giriş Yapildi";
+            return  username + " Giriş Yapildi";
         } catch (Exception e) {
             e.printStackTrace(); // Konsola tam exception çıkar
 

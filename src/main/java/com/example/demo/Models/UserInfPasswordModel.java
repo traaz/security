@@ -9,6 +9,7 @@ import java.util.List;
 public class UserInfPasswordModel implements UserDetails {
     private Integer id;
     private Integer userId;
+    private String tcNo;  //dbde bu tabloda yok ben ekledim.
     private String password;
 
     public UserInfPasswordModel() {
@@ -18,6 +19,14 @@ public class UserInfPasswordModel implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
+    }
+
+    public String getTcNo() {
+        return tcNo;
+    }
+
+    public void setTcNo(String tcNo) {
+        this.tcNo = tcNo;
     }
 
     public void setPassword(String password) {
@@ -47,7 +56,7 @@ public class UserInfPasswordModel implements UserDetails {
 
     @Override
     public String getUsername() {
-        return String.valueOf(userId);
+        return tcNo;
     }
 
     @Override

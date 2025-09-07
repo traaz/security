@@ -3,7 +3,7 @@ package com.example.demo.queries;
 public class SqlQuery {
 
     public static  final String USER_DETAILS_SQL = """
-    SELECT u."ID" as userId, p."PASSWORD" as password
+    SELECT u."ID" as userId, u."IDENTITY_NUMBER" as tcNo ,p."PASSWORD" as password
     FROM "USERINF" u
     JOIN "USERINFPASSWORD" p ON u."ID" = p."USER_ID"
     WHERE u."IDENTITY_NUMBER" = :tcNo
