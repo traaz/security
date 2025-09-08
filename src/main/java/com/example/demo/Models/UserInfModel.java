@@ -9,6 +9,8 @@ public class UserInfModel{
     private Integer cityCode;
     private Integer institution_id;
 
+    public UserInfModel() {
+    }
 
     public UserInfModel(Integer id, String identity_number, String name, String surname, Integer isAdmin, Integer cityCode, Integer institution_id) {
         this.id = id;

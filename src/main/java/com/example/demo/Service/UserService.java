@@ -31,4 +31,8 @@ public class UserService {
 
         userInfPasswordRepository.insertPassword(pass);
     }
+
+    public UserInfModel findUserByTcNo(String tcNo){
+        return userInfRepository.findByUserByTcNo(tcNo);
+    }
 }

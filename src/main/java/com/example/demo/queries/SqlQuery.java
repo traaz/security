@@ -9,6 +9,11 @@ public class SqlQuery {
     WHERE u."IDENTITY_NUMBER" = :tcNo
 """;
 
+    public static final String FIND_USER_BY_TC_NO = """
+            SELECT * FROM "USERINF" u
+            WHERE u."IDENTITY_NUMBER" = :identityNumber
+            """;
+
     public static  final String INSERT_USERINF = """
     INSERT INTO "USERINF"
     ("IDENTITY_NUMBER", "NAME", "SURNAME", "IS_ADMIN", "CITY_CODE", "INSTITUTION_ID")
@@ -20,6 +25,8 @@ public class SqlQuery {
         INSERT INTO "USERINFPASSWORD" ("USER_ID", "PASSWORD")
         VALUES (:userId, :password)
     """;
+
+
 
 
 

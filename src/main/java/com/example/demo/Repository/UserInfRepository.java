@@ -1,7 +1,9 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Models.UserInfModel;
+import com.example.demo.Models.UserInfPasswordModel;
 import com.example.demo.queries.SqlQuery;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -25,6 +27,14 @@ public class UserInfRepository {
         params.addValue("institutionId", userInfModel.getInstitution_id());
 
         return namedParameterJdbcTemplate.queryForObject(SqlQuery.INSERT_USERINF, params, Integer.class);
+
+    }
+
+    public UserInfModel findByUserByTcNo(String tcNo){
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("identityNumber",tcNo);
+
+        return namedParameterJdbcTemplate.queryForObject(SqlQuery.FIND_USER_BY_TC_NO, params,  new BeanPropertyRowMapper<>(UserInfModel.class));
 
     }
 
