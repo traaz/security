@@ -38,8 +38,8 @@ public class UserController {
                     new UsernamePasswordAuthenticationToken(loginRequest.getTcNo(), loginRequest.getPassword())); //ilk deger loadByUserName'e gider
 
 
-            //tum islemler bittikten sonra security contexe yazilir
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        //    SecurityContextHolder.getContext().setAuthentication(authentication);
 
             //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
           //7  String username = authentication.getName();  // Giriş yapan username burada tcsi cunku userdetails sınıfında usernama tc dondurudk

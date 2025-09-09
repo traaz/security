@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.Models.UserInfModel;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -34,6 +35,39 @@ public class JwtService {
                 .setExpiration(new Date(System.currentTimeMillis()+ EXPIRATION_TIME))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public String getIdentityNumber(String token){
+        return extractAllClaims(token).get("identityNumber").toString();
+    }
+    public String getUsername(String token){
+        return extractAllClaims(token).get("username").toString();
+    }
+
+    public String getSurname(String token){
+        return extractAllClaims(token).get("surname").toString();
+    }
+    public Integer getCityCode(String token){
+        return (Integer) extractAllClaims(token).get("cityCode");
+    }
+    public Integer getInstitutionId(String token){
+        return (Integer) extractAllClaims(token).get("institutionId");
+    }
+    public Date extractExpirationDate(String token){
+        return extractAllClaims(token).getExpiration();
+    }
+
+    public boolean isTokenExpirate(String token){
+        return extractAllClaims(token).getExpiration().before(new Date());
+    }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts
+                .parserBuilder()
+                .setSigningKey(getSignKey()) //verilen tokenın signature bu imzala mı olusturulmmus. gelen signature ile karşılaştır.
+                .build()
+                .parseClaimsJws(token)
+                .getBody(); //payload
     }
 
 }
